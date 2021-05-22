@@ -61,8 +61,9 @@ pub contract Art: NonFungibleToken {
         }
 
     }
-
+    // copyright royalty
      pub struct Royalty{
+        
         pub let wallet:Capability<&{FungibleToken.Receiver}> 
         pub let cut: UFix64
 
@@ -104,7 +105,7 @@ pub contract Art: NonFungibleToken {
             self.name = metadata.name
             self.description=metadata.description
         }
-
+        // cache the url from content 
         pub fun cacheKey() : String {
             if self.url != nil {
                 return self.url!

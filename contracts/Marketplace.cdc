@@ -115,7 +115,7 @@ pub contract Marketplace {
                 ?? panic("Could not borrow reference to owner token vault")
             
             let token <-self.withdraw(tokenID: tokenID)
-
+            // reduce royality by circulation 
             for royality in token.royalty.keys {
                 let royaltyData= token.royalty[royality]!
                 let amount= price * royaltyData.cut

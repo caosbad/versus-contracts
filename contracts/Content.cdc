@@ -92,7 +92,9 @@ pub contract Content {
         self.CollectionStoragePath=/storage/versusContentCollection
 
         let account =self.account
+        // save the Collection resource to stroage 
         account.save(<- Content.createEmptyCollection(), to: Content.CollectionStoragePath)
+        // move Collection resource to private storage
         account.link<&Content.Collection>(Content.CollectionPrivatePath, target: Content.CollectionStoragePath)
 
         emit ContractInitialized()
